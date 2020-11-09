@@ -1,0 +1,34 @@
+<%- include('partials/header.ejs') %>
+<body>
+    <%- include('partials/homenavbar.ejs') %>
+    <div class="container" >
+        <hr>
+        <div class="jumbotron">
+            <h1 class="display-4">Bem Vindo!</h1>
+            <p class="lead">Este é um blog feito em Node JS</p>
+            <hr class="my-4">
+            <p>Seja bem vindo ao Blog Guiapress, esta pagina esta em fase teste. O Guiapress foi criado como uma pagina de busca para conteúdos educacionais. Aqui você pode encontrar o trabalho de escola, artigos, atividades infantis entre outras coisas.</p>
+            <a style="transition: 1s;" class="btn btn-outline-danger btn-lg" href="/login" role="button">Login</a>
+            <a style="transition: 1s; float: right;" class="btn btn-outline-danger btn-lg" href="/admin/articles" role="button">Administrador</a>
+        </div>
+        <hr>
+        <% articles.forEach(article =>{ %>
+           <div class="card">
+               <div class="card-header">
+                   <h3> <%= article.title %> </h3>
+               </div>
+               <div class="card-body">
+                    <a href="/<%= article.slug %>" class="btn btn-secondary">Ler Artigo</a>
+               </div>
+           </div><br/>
+        <% }) %>
+
+        <div class="row">
+            <div class="col col-12">
+                <a class="btn btn-outline-danger" href="/article/page/2" style="float: right; transition: 1s;">Next >></a></br>
+                <hr>
+            </div>
+        </div>
+    </div>
+</body>
+<%- include('partials/footer.ejs') %>

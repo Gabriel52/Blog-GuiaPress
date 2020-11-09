@@ -1,0 +1,55 @@
+<%- include('../../partials/header.ejs') %>
+
+<body>
+    <%- include('../../partials/navbar.ejs') %>
+    <div class="container">
+        <hr>
+        <div class="card mt-5">
+            <div class="card-header">
+                <h1>Criação de Usuario</h1>
+            </div>
+            <div class="card-body">
+                <form action="/users/create" method="POST">
+                    <input id="email" class="form-control" name="email" type="email" placeholder="email@exemplo.com" ><br>
+                    <input id="password" class="form-control " type="password" name="password" placeholder="Digite sua senha..."><br>
+                    <input id="confirmPassword" class="form-control " type="password" name="confirmPassword" placeholder="Confirmar senha..."><br>
+                    <button type="submit" class="btn btn-danger btn-block" style="transition: 1s;" onclick="return check()">Cadastrar-se</button>
+                    <input id="ArrayEmail" type="hidden" value="<%= arrayEmail %>">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<%- include('../../partials/footer.ejs') %>
+
+<script>
+    const confirmPassword = document.getElementById('confirmPassword')
+    const password = document.getElementById('password')
+
+    let email = document.getElementById('email')
+    let ArrayEmail = document.getElementById('ArrayEmail').value
+
+    function check(){
+        let array = ArrayEmail.includes(email.value)
+        if(password.value != confirmPassword.value){
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Senha incorreta',
+                
+            })
+            return false
+            
+        }
+        if(array){
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Email já está sendo usado. Tente outro',
+                
+            })
+            return false
+        }
+    }
+
+</script>

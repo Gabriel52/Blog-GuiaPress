@@ -1,0 +1,20 @@
+<%- include('partials/header.ejs') %>
+<body>
+    <%- include('partials/homenavbar.ejs') %>
+    <div class="container" >
+        <hr>
+        <div class="card">
+            <div class="card-header">
+                <h2><%= article.title %></h2>
+            </div>
+            <div class="card-body">
+                <!-- O sinal de igual exibe uma variavel, já o sinal de menos passa as informações formatadas -->
+                <%- article.body %>
+            </div>
+        </div>
+        <a href="/" class="btn btn-outline-primary" style="transition: 1s; margin-top: 5%;">Voltar</a>
+    </div>
+    <!-- Botão de voltar -->
+    
+</body>
+<%- include('partials/footer.ejs') %>

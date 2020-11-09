@@ -1,0 +1,12 @@
+<nav class="navbar navbar-dark " style ="background-image: linear-gradient(to right, tomato, purple);">
+    <a class="navbar-brand" href="/">
+        <img src="/assets/logo.png" alt="" style="width: 45%;">
+    </a>
+    <ul class="navbar nav" style="margin-right:10% ;">
+        <% categories.forEach(category =>{ %>
+            <li class="nav-item">
+                <a class="nav-link" href="/category/<%= category.slug %>" style="color: seashell;"><%= category.title %></a>
+            </li>
+        <% }) %>
+    </ul>
+</nav>

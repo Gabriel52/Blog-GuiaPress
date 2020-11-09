@@ -1,0 +1,50 @@
+<%- include('../../partials/header.ejs') %>
+<body>
+    <%- include('../../partials/navbar.ejs') %>
+    <div class="container">
+        <hr>
+        <h2>Artigos</h2>
+        <a class="btn btn-secondary" href="/admin/articles/new">Criar novo Artigo</a>
+        <hr>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th style="color:#CB0714;">ID</th>
+                    <th style="color:#CB0714;">Titulo</th>
+                    <th style="color:#CB0714;">Slug</th>
+                    <th style="color:#CB0714;">Categoria</th>
+                    <th style="color:#CB0714;">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% articles.forEach(article =>{ %>
+                    <tr>
+                        <th ><%= article.id %></th>
+                        <th ><%= article.title %></th>
+                        <th ><%= article.slug %></th>
+                        <th ><%= article.category.title %></th>
+                        <th style="display: inline-flex; margin: 0 auto;"> 
+                            <a href="/admin/articles/update/<%= article.id %>" class="btn btn-warning">Editar</a>
+                            <form method="POST" action='/articles/delete'  onsubmit="confirmDelition(event, this)" >
+                                <input type="hidden" name="id" value="<%= article.id %>"/>
+                                <button class="btn btn-danger" style="margin-left: 2vh;">Deletar</button>
+                            </form>
+                        </th>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        // Função em um template em EJS
+        function confirmDelition(event, form){
+            event.preventDefault();
+            let decision = confirm('Você quer deletar este Artigo? ');
+            if(decision){
+                form.submit();    
+            }
+        }
+    </script>
+</body>
+<%- include('../../partials/footer.ejs') %>
+

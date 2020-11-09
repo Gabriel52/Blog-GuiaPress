@@ -1,0 +1,41 @@
+<%- include('../../partials/header.ejs') %>
+<body>
+    <%- include('../../partials/navbar.ejs') %>
+    <div class="container">
+        <hr>
+        <h2>Usuarios</h2>
+        <a class="btn btn-secondary" href="/admin/users/create">Criar novo Usuario</a>
+        <hr>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="text-danger">ID</th>
+                    <th class="text-danger">Email</th>
+                
+                </tr>
+            </thead>
+            <tbody>
+                <% users.forEach(user =>{ %>
+                    <tr>
+                        <td><%= user.id %></td>
+                        <td><%= user.email %></td>
+                    
+                    </tr>    
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        // Função em um template em EJS
+        function confirmDelition(event, form){
+            event.preventDefault();
+            let decision = confirm('Você quer deletar este usuario ');
+
+            if(decision){
+                form.submit();    
+            }
+        }
+    </script>
+</body>
+<%- include('../../partials/footer.ejs') %>
+

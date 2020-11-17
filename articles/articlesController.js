@@ -3,7 +3,6 @@ const router = express.Router();
 const categoryModel = require('../categories/categories');
 const articleModel = require('./Article');
 const slugify = require('slugify');
-const Category = require('../categories/categories');
 const adminAuth = require('../middleware/adminAuth');
 
 // Utilizando join com sequelize

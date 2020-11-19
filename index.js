@@ -74,8 +74,12 @@ app.get('/',(req,res)=>{
             limit:4
         }).then(categories =>{
             res.render('index', {articles:articles, categories:categories});
-        });
-    });
+        }).catch(error=>{
+            console.log(error)
+        })
+    }).catch(error=>{
+        console.log(error)
+    })
 });
 
 app.get('/:slug',(req,res)=>{
@@ -88,12 +92,16 @@ app.get('/:slug',(req,res)=>{
         if(article!= undefined){
             categoriesModel.findAll().then(categories =>{
                 res.render('article', {article:article, categories:categories});
-            });
+            }).catch(error=>{
+                console.log(error)
+            })
         }else{
             res.redirect('/');
         }
     }).catch(()=>{
         res.redirect('/');
+    }).catch(error=>{
+        console.log(error)
     })
     
 })

@@ -12,7 +12,9 @@ router.get('/admin/categories',adminAuth,(req,res)=>{
     categoryModel.findAll().then(categories =>{
         res.render('admin/categories/index',{
             categories:categories
-        });
+        }).catch(error=>{
+            console.log(error)
+        })
     })
 })
 
@@ -41,6 +43,8 @@ router.post('/categories/save', adminAuth,(req, res)=>{
             slug: slugify(title)
         }).then(()=>{
             res.redirect('/admin/categories')
+        }).catch(error=>{
+            console.log(error)
         })
     }else{
         res.redirect('/admin/categories/new');
@@ -59,6 +63,8 @@ router.post('/categories/delete',adminAuth,(req,res)=>{
                 }
             }).then(()=>{
                 res.redirect('/admin/categories')
+            }).catch(error=>{
+                console.log(error)
             })    
 
         }else{
@@ -80,6 +86,8 @@ router.post('/categories/update',adminAuth,(req,res)=>{
         }
     }).then(()=>{
         res.redirect('/admin/categories')
+    }).catch(error=>{
+        console.log(error)
     })
 })
 

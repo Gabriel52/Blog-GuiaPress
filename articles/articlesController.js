@@ -14,12 +14,16 @@ router.get('/admin/articles',adminAuth,(req, res)=>{
         ]
     }).then(articles=>{
         res.render('admin/articles/index',{articles:articles})
+    }).catch(error=>{
+        console.log(error)
     })
 });
 
 router.get('/admin/articles/new', adminAuth,(req, res)=>{
     categoryModel.findAll().then(categories =>{
         res.render('admin/articles/new',{categories:categories});
+    }).catch(error=>{
+        console.log(error)
     })
 });
 
@@ -30,6 +34,8 @@ router.get('/admin/articles/update/:id',adminAuth,(req,res)=>{
         if(article !=undefined){
             categoryModel.findAll().then(categories =>{
                 res.render('admin/articles/edit',{categories:categories, article:article});
+            }).catch(error=>{
+                console.log(error)
             })
         }
         else{
@@ -68,6 +74,8 @@ router.post('/articles/delete',adminAuth,(req,res)=>{
                 }
             }).then(()=>{
                 res.redirect('/admin/articles')
+            }).catch(error=>{
+                console.log(error)
             })    
 
         }else{
@@ -107,9 +115,15 @@ router.get('/article/page/:num', (req,res)=>{
         }
         categoryModel.findAll().then(categories =>{
             res.render('admin/articles/landingPage',{result: result, categories:categories})
-        })
+        }).catch(error=>{
+            console.log(error)
+        })    
+
         // res.json(result)
-    });
+    }).catch(error=>{
+        console.log(error)
+    })    
+
 })
 
 
@@ -131,7 +145,10 @@ router.post('/article/update',(req,res)=>{
         }
     }).then(()=>{
         res.redirect('/admin/articles');
-    })
+    }).catch(error=>{
+        console.log(error)
+    })    
+
  })
 
 module.exports = router

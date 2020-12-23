@@ -22,5 +22,7 @@ Articles.belongsTo(Category);
 
 Articles.sync({force:false}).then(()=>{
     console.log('created articles table')
-});
+}).catch(error=>{
+    console.log(error)
+})
 module.exports = Articles;

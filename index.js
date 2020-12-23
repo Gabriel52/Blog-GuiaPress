@@ -129,6 +129,6 @@ app.get('/category/:slug',(req,res)=>{
 
 
 //####  Servidor
-app.listen(process.env.PORT || 8080,()=>{
+app.listen(3000,()=>{
     console.log('servidor rodando');
 })

@@ -4,7 +4,7 @@
 <p align="center"> 
   <p>O GuiaPress é uma plataforma que foi criado como uma pagina de busca para conteúdos educacionais. Aqui você pode encontrar o trabalho de escola, artigos, atividades infantis entre outras coisas.</p>
  <h2>:computer: Aplicação Web</h2>
- <a href='http://blog-guiapress-com-br.umbler.net'>Site</a>
+ <a style='text-align:center' href='http://blog-guiapress-com-br.umbler.net'>Blog Guiapress</a>
  <h3>Home</h3>
 <hr>
  <img alt="Logo" title="Logo" src="public/assets/landingPage.gif">
